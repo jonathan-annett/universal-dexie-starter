@@ -25,16 +25,12 @@ To install the latest version, and test on posix systens (eg linux, mac os)
 ```bash
 
 #make a folder and change to it
-mkdir -p ~/test-dexie-starter 
-cd ~/test-dexie-starter
-#make sure you have a project package.json
-npm init -y
-# remove any previous version if you have done this before
-npm list | grep universal-dexie-starter && npm remove universal-dexie-starter
+mkdir -p ~/test-dexie-starter && cd ~/test-dexie-starter
+ 
+# remove any previous version if you have done this before, install the package
+rm -rf package.json ./node_modules && npm init -y && npm install --save github:jonathan-annett/universal-dexie-starter
 
-#install latest
-npm install --save github:jonathan-annett/universal-dexie-starter
-
+#run the test
 cd ./node_modules/universal-dexie-starter
 npm run test
 
