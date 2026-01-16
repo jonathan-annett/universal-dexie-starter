@@ -117,3 +117,77 @@ export async function startDexie(dbName, databaseBasePath, extraOpts = {}) {
 
     return new Dexie(dbName, { ...dexieOpts, ...extraOpts });
 }
+
+
+export
+
+async function testStartDexie(databaseBasePath) {
+
+
+
+const db = await startDexie("tests", databaseBasePath);
+
+await db.version(1).stores({
+
+friends: '++id, name, age'
+
+});
+
+
+
+const randomNames = [
+
+"James",
+
+"Sofia",
+
+"Ethan",
+
+"Aarav",
+
+"Isabella",
+
+"Yuki",
+
+"Benjamin",
+
+"Amara",
+
+"Lucas",
+
+"Mia",
+
+"Mateo",
+
+"Fatima",
+
+"Alexander",
+
+"Zoe",
+
+"Liam",
+
+"Chen",
+
+"Olivia",
+
+"Dante",
+
+"Elena",
+
+"Noah"
+
+];
+
+
+
+await db.friends.add({ name: randomNames[Math.floor(randomNames.length * Math.random() ) % randomNames.length], age: parseFloat((19 + (Math.random() * 25)).toFixed(1)) });
+
+
+
+console.log(databaseBasePath || "(default IDB)", "<<<", await db.friends.toArray())
+
+}
+
+
+
