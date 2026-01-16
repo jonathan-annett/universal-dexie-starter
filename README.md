@@ -17,7 +17,7 @@ A zero-config, environment-agnostic loader for **Dexie.js**. This utility allows
 Ensure you have the package installed in your project:
 
 ```bash
-npm install --save github:jonathan-annett/universal-dexie-starter
+npm install --save github:jonathan-annett/universal-dexie-starter#fe8708b863a729d41744e7930670c62ac018fb63
 ```
 
 ## Usage
