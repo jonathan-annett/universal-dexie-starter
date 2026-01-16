@@ -14,10 +14,10 @@ A zero-config, environment-agnostic loader for **Dexie.js**. This utility allows
 
 ## Installation
 
-Ensure you have the necessary shims installed in your project:
+Ensure you have the package installed in your project:
 
 ```bash
-npm install dexie fake-indexeddb indexeddbshim sqlite3 github:jonathan-annett/universal-dexie-starter
+npm install --save github:jonathan-annett/universal-dexie-starter
 ```
 
 ## Usage
@@ -27,7 +27,8 @@ npm install dexie fake-indexeddb indexeddbshim sqlite3 github:jonathan-annett/un
 The `startDexie` function detects your environment and returns a standard Dexie instance.
 
 ```javascript
-import { startDexie } from './start-dexie.js';
+//import { startDexie } from '/universal-dexie-starter';  // use this in the browser (when using the middleware)
+import { startDexie } from 'universal-dexie-starter';     // use this in node.js
 
 // --- Browser Mode ---
 // Uses native IndexedDB.
@@ -53,7 +54,7 @@ To allow browsers to use the "fake" in-memory mode or to easily distribute the l
 
 ```javascript
 import express from 'express';
-import { startDexieExpress } from './start-dexie.js';
+import { startDexieExpress } from 'universal-dexie-starter';
 
 const app = express();
 
