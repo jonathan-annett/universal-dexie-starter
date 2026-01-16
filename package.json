@@ -5,7 +5,7 @@
   "main": "start-dexie.js",
   "type": "module",
   "scripts": {
-    "test": "node -e 'import { testStartDexie } from \"./start-dexie.js\"; testStartDexie(\"fake\");'"
+    "test": "node -e 'import { testStartDexie } from \"./start-dexie.js\"; testStartDexie(\"fake\");testStartDexie(\"./my-freinds\");testStartDexie();'"
   },
   "repository": "github:jonathan-annett/universal-dexie-starter",
   "keywords": [
@@ -25,6 +25,7 @@
     "fake-indexeddb": "^6.2.5",
     "indexeddbshim": "^16.1.0",
     "sqlite3": "^5.1.7",
+    "universal-dexie-starter": "github:jonathan-annett/universal-dexie-starter",
     "websql": "^2.0.3"
   },
   "engines": {
