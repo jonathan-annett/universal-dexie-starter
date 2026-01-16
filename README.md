@@ -26,7 +26,7 @@ To install the latest version, and test on posix systens (eg linux, mac os)
 
 #make a folder and change to it
 mkdir -p ~/test-dexie-starter 
-mkdir cd ~/test-dexie-starter
+cd ~/test-dexie-starter
 #make sure you have a project package.json
 npm init -y
 # remove any previous version if you have done this before
