@@ -29,7 +29,8 @@ async function get_fakeindexedDBHandler() {
 
         // Resolve the entry point and back out to find the build directory
         const resolvedUrl = import.meta.resolve("fake-indexeddb");
-        const dir = join(dirname(fileURLToPath(resolvedUrl)), "build/esm");
+        const resolvedDir = dirname(fileURLToPath(resolvedUrl)).replace(/\/build\/esm\/?$/,'')
+        const dir = join(resolvedDir, "build/esm");
 
         fakeindexedDBHandler = async (baseurl) => {
             const fspath = resolve(dir, baseurl);
@@ -54,13 +55,14 @@ async function get_fakeindexedDBHandler() {
  */
 export async function startDexieExpress(req, res, next) {
     if (req.method !== 'GET') return next();
-    
+
     // Serve this script to the frontend
     if (req.url.endsWith("start-dexie.js")) {
         return res.sendFile(import.meta.filename);
     }
 
     // Match browser requests for the fake-indexeddb shim
+    console.log(req.url);
     const baseurl = /fake\-indexeddb\/(.*)$/.exec(req.url);
     if (!baseurl) return next();
 
@@ -103,7 +105,7 @@ export async function startDexie(dbName, databaseBasePath, extraOpts = {}) {
         const shim = {};
         setGlobalVars(shim, {
             checkOrigin: false,
-            databaseBasePath: base 
+            databaseBasePath: base
         });
 
         dexieOpts = { indexedDB: shim.indexedDB, IDBKeyRange: shim.IDBKeyRange };
@@ -121,71 +123,71 @@ export async function startDexie(dbName, databaseBasePath, extraOpts = {}) {
 
 export
 
-async function testStartDexie(databaseBasePath) {
+    async function testStartDexie(databaseBasePath) {
 
 
 
-const db = await startDexie("tests", databaseBasePath);
+    const db = await startDexie("tests", databaseBasePath);
 
-await db.version(1).stores({
+    await db.version(1).stores({
 
-friends: '++id, name, age'
+        friends: '++id, name, age'
 
-});
-
-
-
-const randomNames = [
-
-"James",
-
-"Sofia",
-
-"Ethan",
-
-"Aarav",
-
-"Isabella",
-
-"Yuki",
-
-"Benjamin",
-
-"Amara",
-
-"Lucas",
-
-"Mia",
-
-"Mateo",
-
-"Fatima",
-
-"Alexander",
-
-"Zoe",
-
-"Liam",
-
-"Chen",
-
-"Olivia",
-
-"Dante",
-
-"Elena",
-
-"Noah"
-
-];
+    });
 
 
 
-await db.friends.add({ name: randomNames[Math.floor(randomNames.length * Math.random() ) % randomNames.length], age: parseFloat((19 + (Math.random() * 25)).toFixed(1)) });
+    const randomNames = [
+
+        "James",
+
+        "Sofia",
+
+        "Ethan",
+
+        "Aarav",
+
+        "Isabella",
+
+        "Yuki",
+
+        "Benjamin",
+
+        "Amara",
+
+        "Lucas",
+
+        "Mia",
+
+        "Mateo",
+
+        "Fatima",
+
+        "Alexander",
+
+        "Zoe",
+
+        "Liam",
+
+        "Chen",
+
+        "Olivia",
+
+        "Dante",
+
+        "Elena",
+
+        "Noah"
+
+    ];
 
 
 
-console.log(databaseBasePath || "(default IDB)", "<<<", await db.friends.toArray())
+    await db.friends.add({ name: randomNames[Math.floor(randomNames.length * Math.random()) % randomNames.length], age: parseFloat((19 + (Math.random() * 25)).toFixed(1)) });
+
+
+
+    console.log(databaseBasePath || "(default IDB)", "<<<", await db.friends.toArray())
 
 }
 
