@@ -17,7 +17,7 @@ A zero-config, environment-agnostic loader for **Dexie.js**. This utility allows
 Ensure you have the necessary shims installed in your project:
 
 ```bash
-npm install dexie fake-indexeddb indexeddbshim sqlite3
+npm install dexie fake-indexeddb indexeddbshim sqlite3 github:jonathan-annett/universal-dexie-starter
 ```
 
 ## Usage
