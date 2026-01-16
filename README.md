@@ -17,8 +17,30 @@ A zero-config, environment-agnostic loader for **Dexie.js**. This utility allows
 Ensure you have the package installed in your project:
 
 ```bash
-npm install --save github:jonathan-annett/universal-dexie-starter#fe8708b863a729d41744e7930670c62ac018fb63
+# most recent version (tested,stable)
+npm install --save github:jonathan-annett/universal-dexie-starter#d03b168322c935175c9aa8082db93b0df63253fa
 ```
+
+To install the latest version, and test on posix systens (eg linux, mac os)
+```bash
+
+#make a folder and change to it
+mkdir -p ~/test-dexie-starter 
+mkdir cd ~/test-dexie-starter
+#make sure you have a project package.json
+npm init -y
+# remove any previous version if you have done this before
+npm list | grep universal-dexie-starter && npm remove universal-dexie-starter
+
+#install latest
+npm install --save github:jonathan-annett/universal-dexie-starter
+
+cd ./node_modules/universal-dexie-starter
+npm run test | grep "<<<"
+
+```
+
+
 
 ## Usage
 
