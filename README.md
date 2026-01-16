@@ -36,7 +36,7 @@ npm list | grep universal-dexie-starter && npm remove universal-dexie-starter
 npm install --save github:jonathan-annett/universal-dexie-starter
 
 cd ./node_modules/universal-dexie-starter
-npm run test | grep "<<<"
+npm run test
 
 ```
 
